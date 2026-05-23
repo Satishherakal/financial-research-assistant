@@ -1,0 +1,97 @@
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+}
+
+.header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.companyInfo {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.logo {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius);
+  object-fit: contain;
+  background: var(--bg-secondary);
+}
+
+.logoFallback {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius);
+  background: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 16px;
+  color: #fff;
+}
+
+.companyName {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.ticker {
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.priceBlock {
+  text-align: right;
+}
+
+.price {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.change {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.positive {
+  color: var(--green);
+}
+
+.negative {
+  color: var(--red);
+}
+
+.metricsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 12px;
+}
+
+.metric {
+  background: var(--bg-secondary);
+  border-radius: var(--radius);
+  padding: 12px 14px;
+}
+
+.metricLabel {
+  font-size: 12px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+}
+
+.metricValue {
+  font-size: 15px;
+  font-weight: 600;
+}
