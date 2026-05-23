@@ -9,34 +9,24 @@ interface AIAnalysisProps {
   hasData: boolean;
 }
 
-/**
- * Very basic markdown-to-html: handles bold, headings, and line breaks.
- * Not a full parser — just enough for the structured AI output.
- */
 function renderMarkdown(text: string): string {
   return text
     .split("\n")
     .map((line) => {
-      // Headings
       if (line.startsWith("### ")) return `<h3>${line.slice(4)}</h3>`;
       if (line.startsWith("## ")) return `<h3>${line.slice(3)}</h3>`;
       if (line.startsWith("# ")) return `<h2>${line.slice(2)}</h2>`;
-      // Horizontal rule
       if (line.match(/^-{3,}$/)) return "<hr />";
-      // List items
       if (line.match(/^\s*[-*]\s/))
         return `<li>${line.replace(/^\s*[-*]\s/, "")}</li>`;
       if (line.match(/^\s*\d+\.\s/))
         return `<li>${line.replace(/^\s*\d+\.\s/, "")}</li>`;
-      // Empty line
       if (line.trim() === "") return "";
-      // Regular paragraph
       return `<p>${line}</p>`;
     })
     .join("")
     .replace(/<\/li><li>/g, "</li><li>")
     .replace(/(<li>)/g, (match, _p1, offset, str) => {
-      // Wrap consecutive <li> blocks in <ul>
       if (offset === 0 || !str.substring(offset - 5, offset).includes("li>")) {
         return "<ul>" + match;
       }

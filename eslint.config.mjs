@@ -7,9 +7,7 @@ const eslintConfig = defineConfig([
   ...nextTs,
   {
     rules: {
-      // External images from Finnhub API don't benefit from next/image optimization
       "@next/next/no-img-element": "off",
-      // Initial data fetching in useEffect is a standard pattern for this app
       "react-hooks/set-state-in-effect": "off",
     },
   },

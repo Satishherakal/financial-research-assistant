@@ -107,6 +107,5 @@ export async function getCompanyNews(
 
   const data = await res.json();
 
-  // Return only the most recent 10 articles
   return (data as NewsArticle[]).slice(0, 10);
 }

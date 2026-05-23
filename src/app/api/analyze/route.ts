@@ -14,7 +14,6 @@ export async function POST(request: Request) {
       );
     }
 
-    // Build the headlines list from news articles
     const headlines: string[] = (newsData?.articles || []).map(
       (a: { headline?: string; title?: string }) => a.headline || a.title || ""
     );
@@ -28,7 +27,6 @@ export async function POST(request: Request) {
       sentimentLabel: sentimentData?.overallLabel || "Neutral",
     });
 
-    // Save to Supabase
     const { error: dbError } = await getSupabase().from("analyses").insert({
       ticker: ticker.toUpperCase(),
       company_name: companyName || ticker,
@@ -40,7 +38,6 @@ export async function POST(request: Request) {
 
     if (dbError) {
       console.error("Supabase insert error:", dbError);
-      // Don't fail the request if DB write fails — still return analysis
     }
 
     return NextResponse.json({ analysis });

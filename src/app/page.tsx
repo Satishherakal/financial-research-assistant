@@ -78,7 +78,6 @@ export default function Home() {
       const data = await res.json();
       setHistory(data.history || []);
     } catch {
-      // History fetch is non-critical
     }
   }, []);
 
@@ -94,7 +93,6 @@ export default function Home() {
     setCurrentTicker(ticker);
 
     try {
-      // Fetch stock data, news, and sentiment in parallel
       const [stockRes, newsRes, sentimentRes] = await Promise.all([
         fetch(`/api/stock/${encodeURIComponent(ticker)}`),
         fetch(`/api/news/${encodeURIComponent(ticker)}`),
@@ -149,8 +147,6 @@ export default function Home() {
 
       const data = await res.json();
       setAnalysis(data.analysis);
-
-      // Refresh history after new analysis
       fetchHistory();
     } catch (err) {
       setError(

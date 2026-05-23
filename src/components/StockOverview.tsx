@@ -24,7 +24,6 @@ interface StockOverviewProps {
 
 function formatMarketCap(mcap: number): string {
   if (!mcap) return "N/A";
-  // Finnhub returns market cap in millions
   if (mcap >= 1000000) return `$${(mcap / 1000000).toFixed(2)}T`;
   if (mcap >= 1000) return `$${(mcap / 1000).toFixed(2)}B`;
   return `$${mcap.toFixed(2)}M`;

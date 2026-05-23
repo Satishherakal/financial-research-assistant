@@ -37,7 +37,6 @@ export default function SentimentGauge({
   overallLabel,
   articles,
 }: SentimentGaugeProps) {
-  // Normalize score from [-1, 1] to [0, 100] for the gauge bar
   const gaugePercent = Math.max(0, Math.min(100, (averageScore + 1) * 50));
 
   if (!articles || articles.length === 0) {

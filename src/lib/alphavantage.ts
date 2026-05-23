@@ -35,7 +35,6 @@ export async function getNewsSentiment(
 
   const data = await res.json();
 
-  // Handle API limit / error responses
   if (data["Note"] || data["Information"] || !data.feed) {
     return {
       articles: [],
@@ -46,7 +45,6 @@ export async function getNewsSentiment(
 
   const articles: SentimentArticle[] = data.feed.map(
     (item: Record<string, unknown>) => {
-      // Find the ticker-specific sentiment if available
       const tickerSentiment = (
         item.ticker_sentiment as Array<{
           ticker: string;
@@ -76,7 +74,6 @@ export async function getNewsSentiment(
     }
   );
 
-  // Calculate average sentiment
   const scores = articles.map((a) => a.tickerSentimentScore);
   const avg =
     scores.length > 0
