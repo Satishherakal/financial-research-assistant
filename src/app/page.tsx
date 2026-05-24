@@ -77,14 +77,14 @@ export default function Home() {
       const res = await fetch("/api/history");
       const data = await res.json();
       setHistory(data.history || []);
-    } catch {
+    } catch (err) {
+      console.error("Failed to load history:", err);
     }
   }, []);
 
   useEffect(() => {
     fetchHistory();
   }, [fetchHistory]);
-
 
   const handleSearch = useCallback(async (ticker: string) => {
     setLoading(true);

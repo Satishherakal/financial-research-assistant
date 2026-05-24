@@ -28,7 +28,6 @@ export interface CompanyProfile {
   industry: string;
   logo: string;
   weburl: string;
-  finnhubIndustry: string;
 }
 
 export interface NewsArticle {
@@ -86,7 +85,6 @@ export async function getCompanyProfile(
     industry: data.finnhubIndustry || "",
     logo: data.logo || "",
     weburl: data.weburl || "",
-    finnhubIndustry: data.finnhubIndustry || "",
   };
 }
 

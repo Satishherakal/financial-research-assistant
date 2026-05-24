@@ -14,7 +14,6 @@ export async function GET(
       getCompanyProfile(symbol),
     ]);
 
-    // Validate that we got real data back
     if (!quote.currentPrice && !profile.name) {
       return NextResponse.json(
         { error: "Invalid ticker or no data available" },

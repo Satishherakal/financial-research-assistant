@@ -3,7 +3,6 @@ import styles from "./LoadingState.module.css";
 export default function LoadingState() {
   return (
     <div id="loading-skeleton">
-      {/* Stock overview skeleton */}
       <div className={styles.skeleton}>
         <div className={`${styles.block} ${styles.blockTall}`} />
         <div className={`${styles.block} ${styles.blockWide}`} />

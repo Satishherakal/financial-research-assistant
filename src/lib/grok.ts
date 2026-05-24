@@ -24,9 +24,9 @@ function generateFallbackAnalysis(input: AnalysisInput): string {
   const isNegative = input.sentimentScore <= -0.05;
   const sentimentStr = isPositive ? "mostly positive" : isNegative ? "mostly negative" : "mixed/neutral";
   
-  const currentPrice = (input.stockData as any).currentPrice || 0;
-  const change = (input.stockData as any).change || 0;
-  const percentChange = (input.stockData as any).percentChange || 0;
+  const currentPrice = Number(input.stockData.currentPrice) || 0;
+  const change = Number(input.stockData.change) || 0;
+  const percentChange = Number(input.stockData.percentChange) || 0;
   const direction = change >= 0 ? "upward" : "downward";
 
   return `### **Company Overview**
